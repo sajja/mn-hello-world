@@ -1,8 +1,8 @@
 package hello.world.server;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import hello.world.server.service.BookService;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -17,8 +17,10 @@ public class GreetController {
 
     @Get("/")
     public String greet() throws UnsupportedEncodingException, JsonProcessingException {
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = ow.writeValueAsString(bookService.getBooks());
-        return json;
+        System.out.println("Request received...");
+        GsonBuilder builder = new GsonBuilder();
+        builder.setPrettyPrinting();
+        Gson gson = builder.create();
+        return gson.toJson(bookService.getBooks());
     }
 }
