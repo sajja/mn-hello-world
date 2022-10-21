@@ -15,6 +15,9 @@
 
 `-Dcom.sun.management.jmxremote.port=3333 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false`
 
+## Build native image
+`mvn package -Dpackaging=native-image`
+
 ## Bypass cloud provider detection
 
 `-Dmicronaut.cloud.platform=BARE_METAL`

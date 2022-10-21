@@ -5,6 +5,11 @@ public class Book {
     private String author;
     private String title;
 
+    public Book(String isbn, String author, String title) {
+        this.isbn = isbn;
+        this.author = author;
+        this.title = title;
+    }
 
     public String getIsbn() {
         return isbn;
